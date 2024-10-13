@@ -127,6 +127,12 @@ const book = lufthansa.book; //copy of the main function - this is not a method 
 // using call method
 book.call(eurowings, 343, 'Hossain');
 
+// apply method - this is not using in JS anymore, but it's working fine
+book.apply(eurowings, [224, "niceName"])
+
 // Best practice for es6
 const flightData = [353, 'George Paul'];
 book.call(eurowings, ...flightData);
+
+
+// Bind method
