@@ -1,6 +1,5 @@
 'use strict';
 
-
 /*
 const bookings = [];
 
@@ -77,6 +76,7 @@ document.body.addEventListener('click', high5);
 ['Jonas', 'Ebro', 'Adam'].forEach(high5);
 */
 
+/*
 // Function returning Function
 // This is working because of closure
 const greet = function (greeting) {
@@ -95,3 +95,38 @@ const greet2 = greeting => name => {
 };
 
 greet2('Hi Kaman ansen?')('Na kaman nai');
+*/
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // old way of write function in a object
+  //book: function(){}
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(234, 'Arafat Howlader');
+// console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+// storing the book function in a variable
+// if you call the book function directly here, it will result undefined or an error, because of the this keywords.  - this keywords depends on how the function actually called.
+const book = lufthansa.book; //copy of the main function - this is not a method anymore
+
+// using call method
+book.call(eurowings, 343, 'Hossain');
+
+// Best practice for es6
+const flightData = [353, 'George Paul'];
+book.call(eurowings, ...flightData);
