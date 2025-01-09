@@ -374,12 +374,30 @@ GOOD LUCK
 
 (function () {
   const header = document.querySelector('h1');
-  header.style.color = 'red';
+  header.style.color = '#E82561';
 
   document.querySelector('body').addEventListener('click', function () {
-    header.style.color = 'blue';
+    header.style.color = header.style.color === '#E82561' ? '#C30E59' : '#E82561';
     console.log('Clicked');
   });
 })();
 
+// callback function call later. Call by other function
+const oneWord = str => {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = str => {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer(`JavaScript is the best`, upperFirstWord);
 
