@@ -546,4 +546,4 @@ const Data2 = [1, 5, 3, 9, 6, 1];
 poll.displayResults.call({ answers: Data2 });
 poll.displayResults.call({ answers: Data1 }, 'string');
 
-// poll.registerNewAnswer();
+poll.registerNewAnswer(); 
